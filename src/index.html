@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="./Component.js"></script>
+    </head>
+    <body>
+        <div id="app" style="min-height: 5rem;background-color: red;"></div>
+        <script defer>
+            let x = new C("Hello"), y = new C("World");
+            x.attach("commit", x.handle.bind(x, "hello"))
+            y.attach("commit", (evt)=>{
+                console.log("foo evt",evt);
+            });
+            x.renderComponent("app");
+            y.renderComponent("app");
+            //el.click();
+        </script>
+    </body>
+</html>
