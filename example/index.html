@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Example vanilla javascript UI Component</title>
+        <link rel="stylesheet" href="./counter.css"></link>
+        <style>
+            html, body{
+                height: 100vh;
+                background-color: #607d8b;
+            }
+            body{
+                display: grid;
+                place-content: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app" style=""></div>
+        <script src="../src/Component.js"></script>
+        <script type="module">
+            import {Counter} from './counter.js'
+            let counter = new Counter();
+            counter.renderComponent("app");
+        </script>
+    </body>
+</html>

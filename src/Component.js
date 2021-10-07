@@ -1,5 +1,5 @@
 let __UNIQUE_ID_COUNT = 0;
-class Events {
+class CustEvents {
     constructor() {
         this._register = {};
     }
@@ -14,7 +14,7 @@ class Events {
         console.log(eventName, this._register[eventName]);
     }
 }
-class Component extends Events {
+class Component extends CustEvents {
     constructor() {
         super();
         this.__id = __UNIQUE_ID_COUNT++;
@@ -27,6 +27,7 @@ class Component extends Events {
         return this.__id;
     }
     renderComponent (containerId) {
+        this._container_id = containerId;
         const container = document.getElementById(containerId);
         if(!container) {
             throw new Error("Error getting container with container Id");
@@ -35,6 +36,7 @@ class Component extends Events {
             let template = document.createElement("template");
             template.innerHTML = this.render();
             container.appendChild( template.content);
+            this.__content = container.lastElementChild;
         } catch (e){
             throw e;
         }
@@ -52,30 +54,11 @@ class Component extends Events {
         // can throw or pass silent
         return '';
     }
+    reRender(){
+        if(this._container_id) {
+            this.__content.remove();
+            this.renderComponent(this._container_id);
+        }
+    }
 }
 Component._register = [];
-
-
-class C extends Component{
-    constructor(name) {
-        super();
-        this.name = name;
-    }
-    handle (...args) {
-        console.log("handleing - ", args);
-    }
-    edit () {
-        
-    }  
-    commit (msg) {
-
-       this.dispatch("commit", {x:msg});
-    }
-    render() {
-        return `<button onclick='${this.toHTMLCall("commit", this.name)}'>Click</button>`;
-    }
-}
-
-//console.log();
-
-//x.commit();
