@@ -1,6 +1,6 @@
 # vanilla-component
 Javascript UI component library.
-# Features:
+# Features
 * create and add children nodes.
 * `addEventlistner` to listen to child events.
 * `dispatch` to dispatch custom event.
