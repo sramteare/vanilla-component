@@ -1,10 +1,10 @@
 # vanilla-component
 Javascript UI component library.
-Features
-create and add children nodes.
-addEventlistner to listen to child events.
-dispatch to dispatch custom event.
-attach child comps html events to the Component object.
+# Features:
+* create and add children nodes.
+* `addEventlistner` to listen to child events.
+* `dispatch` to dispatch custom event.
+* attach a comps html events to the Component object.
 
 
 Check **Counter** example in examples folder to see it in action.
